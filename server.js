@@ -13,9 +13,17 @@ app.get('/greeting/:name', (req, res) => {
 
 
 app.get('/tip/:total/:tipPercantage', (req, res) => {
-    res.send(`yout total:  ` + req.params.total + `  your tip percentage:  ` + req.params.tipPercantage);
-  });
+    //res.send(`yout total:  ` + req.params.total + `  your tip percentage:  ` + req.params.tipPercantage);
+    const x = req.params.total;
+    const y = req.params.tipPercantage;
+    res.send(`tip: ` + tipCalculator(x,y));
+});
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`)
 })
+
+
+function tipCalculator(x,y) {
+    return x * y / 100
+}
